@@ -26,6 +26,7 @@
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/contracts": "^4.4.2",
     "canvas": "^2.8.0",
+    "dotenv": "^12.0.3",
     "ethers": "^5.5.3",
     "gif-encoder-2": "^1.0.5"
   },

@@ -7,7 +7,7 @@ describe("Deploy & Test FrankenPhunks", function () {
 
   beforeEach('Set up contract for each test', async () => {
     FrankenPhunks = await hre.ethers.getContractFactory("FrankenPhunks");
-    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "FRPHUNKS", "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
+    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
     contract = await frankenPhunksContract.deployed();
     accounts = await ethers.getSigners();
     deployer = accounts[0];
@@ -22,7 +22,7 @@ describe("Deploy & Test FrankenPhunks", function () {
     const balanceBefore = await contract.balanceOf(deployer.address);
     console.log("Balance of deployer", balanceBefore.toString());
 
-    await contract.setBaseURI("ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=")
+    await contract.setBaseURI("ipfs://QmfYoQ7cKykmtPbmnKXFFFUG88VqvWvyLgavYo4W6tLF2y/")
 
     await contract.mint(3);
 

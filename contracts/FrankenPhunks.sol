@@ -74,23 +74,8 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     saleIsActive = saleIsActive_;
   }
 
-// ***** REVEAL *****
-
-  //only owner  
-  function reveal() public onlyOwner() {
-      revealed = true;
-  }
-  
 
 // ***** URI HANDLING *****
-
-  function setNotRevealedURI(string memory _notRevealedURI) public onlyOwner {
-    notRevealedUri = _notRevealedURI;
-  }
-
-  function setBaseURI(string memory _newBaseURI) external onlyOwner {
-    baseURI = _newBaseURI;
-  }
 
   function tokenURI(uint256 _tokenId) public view override returns (string memory) {
     require(_exists(_tokenId), "ERC721Metadata: URI query for nonexistent token");
@@ -100,15 +85,36 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
 
     string memory currentBaseURI = _baseURI();
     return bytes(currentBaseURI).length > 0
-        ? string(abi.encodePacked(currentBaseURI, "{", _tokenId.toString(), "}"))
+        ? string(abi.encodePacked(currentBaseURI, _tokenId.toString(), baseExtension))
         : "";
   }
 
-// ***** PAYOUT *****
+// ***** Owner Functions *****
 
-  function withdraw() public nonReentrant {
+  function setNotRevealedURI(string memory _notRevealedURI) public onlyOwner {
+    notRevealedUri = _notRevealedURI;
+  }
+
+  function setBaseURI(string memory _newBaseURI) external onlyOwner {
+    baseURI = _newBaseURI;
+  }
+
+  function reveal() public onlyOwner() {
+    revealed = true;
+  }
+
+  function setBaseExtension(string memory _newBaseExtension) public onlyOwner {
+    baseExtension = _newBaseExtension;
+  }
+
+  function withdraw() public nonReentrant payable onlyOwner{
     uint256 balance = address(this).balance;
 
     Address.sendValue(payable(owner()), balance);
+  }
+
+// ***** Internal Functions *****
+  function _baseURI() internal view virtual override returns (string memory) {
+    return baseURI;
   }
 }
