@@ -513,8 +513,8 @@
       ]
     },
     "/home/bioready/github/FrankenPunks/contracts/FrankenPhunks.sol": {
-      "lastModificationDate": 1642295260404,
-      "contentHash": "6eb6eb25873d207e111371e6099da708",
+      "lastModificationDate": 1642364823454,
+      "contentHash": "f4535953c3c52fa479c1361f78f2e56a",
       "sourceName": "contracts/FrankenPhunks.sol",
       "solcConfig": {
         "version": "0.8.7",

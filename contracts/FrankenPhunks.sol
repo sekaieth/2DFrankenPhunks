@@ -32,9 +32,11 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
   constructor(
     string memory _name,
     string memory _symbol,
+    address _multisig,
     string memory _initNotRevealedUri
   ) ERC721(_name, _symbol) {
     setNotRevealedURI(_initNotRevealedUri);
+    transferOwnership(_multisig);
   }
   
 

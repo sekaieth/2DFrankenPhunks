@@ -11,21 +11,18 @@ async function main() {
     contract = await new hre.ethers.Contract(contractAddress, abi.abi, deployer);
     contract.connect(deployer);
 
+    // Set "Not Revealed" URI
+    // await contract.setNotRevealedURI("ipfs://QmP6kMYFAWV2L2zMRS3pe2U1i4NXVHBALSH341wjo6fYt9/hidden");
 
-    // await contract.setNotRevealedURI("ipfs://QmRxTrsATAmTtiYXyXniGb8WDQwkHwLAcYHW5YRmirFHCd/hidden.json");
-    console.log("URI of token 0", await contract.tokenURI(0));
-    console.log("URI of token 4", await contract.tokenURI(4));
+    // Set baseURI
+    // await contract.setBaseURI("ipfs://bafybeibvaxifxggj4rmwvoxuz6nuvvmrblvxyiicwunx5i332e63gya53a/")
+    
+    // Reveal!
+    // await contract.reveal();
 
+    console.log("URI of token 0:", await contract.tokenURI(0));
+    console.log("URI of token 1:", await contract.tokenURI(1));
 
-
-
-    console.log("URI of token 0", await contract.tokenURI(0));
-    console.log("URI of token 4", await contract.tokenURI(4));
-
-
-
-    console.log("URI of token 0", await contract.tokenURI(0));
-    console.log("URI of token 4", await contract.tokenURI(4));
 
 
 }
