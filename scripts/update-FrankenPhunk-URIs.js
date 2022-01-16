@@ -14,18 +14,18 @@ async function main() {
 
     // await contract.setNotRevealedURI("ipfs://QmRxTrsATAmTtiYXyXniGb8WDQwkHwLAcYHW5YRmirFHCd/hidden.json");
     console.log("URI of token 0", await contract.tokenURI(0));
-    console.log("URI of token 0", await contract.tokenURI(4));
+    console.log("URI of token 4", await contract.tokenURI(4));
 
 
 
 
     console.log("URI of token 0", await contract.tokenURI(0));
-    console.log("URI of token 0", await contract.tokenURI(4));
+    console.log("URI of token 4", await contract.tokenURI(4));
 
 
 
     console.log("URI of token 0", await contract.tokenURI(0));
-    console.log("URI of token 0", await contract.tokenURI(4));
+    console.log("URI of token 4", await contract.tokenURI(4));
 
 
 }

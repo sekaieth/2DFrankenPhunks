@@ -42,7 +42,6 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
 
   function mint(uint16 count) public payable nonReentrant {
 
-    require(saleIsActive, "Sale not active");
     require(totalSupply() + count - 1 < MAX_SUPPLY, "Exceeds max supply");
     require(count <= MAX_MULTIMINT, "Mint at most 7 at a time");
 
@@ -64,14 +63,6 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
         _mint(msg.sender, totalSupply());
       }
     }
-  }
-
-// ***** ACTIVATION *****
-
-  bool public saleIsActive = true;
-
-  function setSaleIsActive(bool saleIsActive_) external onlyOwner {
-    saleIsActive = saleIsActive_;
   }
 
 
