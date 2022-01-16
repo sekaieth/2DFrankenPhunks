@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
+require("hardhat-gas-reporter");
 require('dotenv').config();
 
 
@@ -25,6 +26,10 @@ module.exports = {
     rinkeby: {
       url: `${process.env.ALCHEMY_URL}`,
       accounts: [`${process.env.PRIVATE_KEY}`]
+    },
+    mainnet: {
+      url: `${process.env.ALCHEMY_MAINNET_URL}`,
+      accounts: [`${process.env.MAINNET_PRIVKEY}`]
     }
   },
   etherscan: {

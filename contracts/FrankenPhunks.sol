@@ -33,6 +33,7 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     string memory _name,
     string memory _symbol,
     address _multisig,
+    address _devWallet,
     string memory _initNotRevealedUri
   ) ERC721(_name, _symbol) {
     setNotRevealedURI(_initNotRevealedUri);
@@ -103,7 +104,8 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
   function withdraw() public nonReentrant payable onlyOwner{
     uint256 balance = address(this).balance;
 
-    Address.sendValue(payable(owner()), balance);
+    Address.sendValue(payable(_devWallet), balance * .15);
+    Address.sendValue(payable(owner()), balance * .85);
   }
 
 // ***** Internal Functions *****
