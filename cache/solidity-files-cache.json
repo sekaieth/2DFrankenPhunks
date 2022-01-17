@@ -9,8 +9,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -47,8 +47,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -82,8 +82,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -117,8 +117,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -152,8 +152,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -189,8 +189,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -232,8 +232,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -269,8 +269,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -306,8 +306,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -341,8 +341,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -378,8 +378,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -413,8 +413,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -448,8 +448,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -485,8 +485,8 @@
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -513,15 +513,15 @@
       ]
     },
     "/home/bioready/github/FrankenPunks/contracts/FrankenPhunks.sol": {
-      "lastModificationDate": 1642364823454,
-      "contentHash": "f4535953c3c52fa479c1361f78f2e56a",
+      "lastModificationDate": 1642389905259,
+      "contentHash": "1710f04e6adca181822ee2b6ef16744e",
       "sourceName": "contracts/FrankenPhunks.sol",
       "solcConfig": {
         "version": "0.8.7",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {

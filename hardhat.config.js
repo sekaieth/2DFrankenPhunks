@@ -21,7 +21,15 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.7",
+  solidity: {
+    version: "0.8.7",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 1000,
+      },
+    },
+  },
   networks: {
     rinkeby: {
       url: `${process.env.ALCHEMY_URL}`,
@@ -30,9 +38,9 @@ module.exports = {
     mainnet: {
       url: `${process.env.ALCHEMY_MAINNET_URL}`,
       accounts: [`${process.env.MAINNET_PRIVKEY}`]
-    }
+    },
   },
   etherscan: {
     apiKey: `${process.env.ETHERSCAN_API_KEY}`
-  }
-};
+   },
+}

@@ -26,6 +26,7 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
   string public notRevealedUri;
   string baseURI;
   string public baseExtension = ".json";
+  address _devWallet;
 
 
 
@@ -33,11 +34,12 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     string memory _name,
     string memory _symbol,
     address _multisig,
-    address _devWallet,
+    address _initdevWallet,
     string memory _initNotRevealedUri
   ) ERC721(_name, _symbol) {
     setNotRevealedURI(_initNotRevealedUri);
     transferOwnership(_multisig);
+    _initdevWallet = _devWallet;
   }
   
 
@@ -101,11 +103,20 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     baseExtension = _newBaseExtension;
   }
 
-  function withdraw() public nonReentrant payable onlyOwner{
+  function withdraw() public payable onlyOwner nonReentrant{
     uint256 balance = address(this).balance;
+    uint256 devBalance = balance * 15 / 100; // 15%
 
-    Address.sendValue(payable(_devWallet), balance * .15);
-    Address.sendValue(payable(owner()), balance * .85);
+    Address.sendValue(payable(_devWallet), devBalance);
+    Address.sendValue(payable(owner()), address(this).balance);
+  }
+
+  function setDevWallet(address _newDevWallet) external view onlyOwner {
+    _newDevWallet = _devWallet;
+  }
+
+  receive() external payable {
+
   }
 
 // ***** Internal Functions *****

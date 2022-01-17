@@ -7,10 +7,11 @@ async function main() {
     accounts = await ethers.getSigners();
     deployer = accounts[0];
     const contractAddress = "0x8A7982316D139FE72E9551E2C0B8b4B29EbF2f71";
+    const devWallet = "0x246913F9b282208E8377E0251900bd3942B35c1c"
 
     contract = await hre.ethers.getContractFactory("FrankenPhunks");
 
-    const estimatedGas = await ethers.provider.estimateGas(contract.getDeployTransaction("2DFrankenPhunks", "PHUNKEN", "0xf5963554E4FD06F910E4e74dD012E9b018C83209", "ipfs://QmP6kMYFAWV2L2zMRS3pe2U1i4NXVHBALSH341wjo6fYt9/hidden"));
+    const estimatedGas = await ethers.provider.estimateGas(contract.getDeployTransaction("2DFrankenPhunks", "PHUNKEN", "0xf5963554E4FD06F910E4e74dD012E9b018C83209", devWallet, "ipfs://QmP6kMYFAWV2L2zMRS3pe2U1i4NXVHBALSH341wjo6fYt9/hidden"));
 
     const feeData = await ethers.provider.getFeeData();
     console.log("Fee data:", feeData)
