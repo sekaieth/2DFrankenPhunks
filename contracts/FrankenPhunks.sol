@@ -7,7 +7,6 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "hardhat/console.sol";
 
 contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
 
@@ -112,8 +111,6 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     uint256 balance = address(this).balance;
     uint256 devBalance = balance * 15 / 100; // 15%
 
-    console.logAddress(_devWallet);
-    console.logAddress(owner());
     Address.sendValue(payable(_devWallet), devBalance);
     Address.sendValue(payable(owner()), address(this).balance);
   }
