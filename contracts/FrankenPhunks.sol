@@ -122,10 +122,6 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     _newDevWallet = _devWallet;
   }
 
-  receive() external payable {
-
-  }
-
 // ***** Internal Functions *****
   function _baseURI() internal view virtual override returns (string memory) {
     return baseURI;
