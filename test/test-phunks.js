@@ -12,7 +12,7 @@ describe("Deploy & Test FrankenPhunks", function () {
     devWallet = accounts[1];
 
     FrankenPhunks = await hre.ethers.getContractFactory("FrankenPhunks");
-    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", deployer.address, "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
+    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", deployer.address, devWallet.address,  "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
     contract = await frankenPhunksContract.deployed();
   })
 
@@ -128,19 +128,29 @@ describe("Deploy & Test FrankenPhunks", function () {
 
   console.log("MINTING COMPLETED!");
 
-
-  console.log("Deployer token balance:", await contract.balanceOf(deployer.address));
+  const deployerTokenBalance =  await contract.balanceOf(deployer.address);
+  console.log("Deployer token balance:", deployerTokenBalance.toString());
 
   contractEtherBalance = await contract.getBalance();
-  console.log("Contract Ether Balance:", contractEtherBalance);
+  console.log("Contract Ether Balance:", ethers.utils.formatUnits(contractEtherBalance, "ether"));
 
   deployerBalance = deployer.getBalance();
   console.log("Deployer Ether balance before withdraw:", await deployerBalance);
 
-  withdraw = contract.withdraw();
+  devWalletBalanceBeforeWithdraw = devWallet.getBalance();
+  console.log("Dev Wallet Ether balance before withdraw:", await devWalletBalanceBeforeWithdraw);
+
+  // Set Dev Wallet
+  console.log("dev wallet:", devWallet.address);
+  await contract.setDevWallet(devWallet.address);
+
+  withdraw = await contract.withdraw();
 
   deployerBalanceAfterWithdraw = deployer.getBalance();
   console.log("Deployer Ether balance after withdraw:", await deployerBalanceAfterWithdraw);
+
+  devWalletBalanceAfterWithdraw = devWallet.getBalance();
+  console.log("Dev Wallet Ether balance after withdraw:", await devWalletBalanceAfterWithdraw);
 
     
   });

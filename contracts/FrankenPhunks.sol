@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "hardhat/console.sol";
 
 contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
 
@@ -26,6 +27,7 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
   string public notRevealedUri;
   string baseURI;
   string public baseExtension = ".json";
+  address _devWallet;
 
 
 
@@ -33,10 +35,12 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     string memory _name,
     string memory _symbol,
     address _multisig,
+    address _initdevWallet,
     string memory _initNotRevealedUri
   ) ERC721(_name, _symbol) {
     setNotRevealedURI(_initNotRevealedUri);
     transferOwnership(_multisig);
+    _devWallet = _initdevWallet;
   }
   
 
@@ -45,7 +49,7 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
   function mint(uint16 count) public payable nonReentrant {
 
     require(totalSupply() + count - 1 < MAX_SUPPLY, "Exceeds max supply");
-    require(count <= MAX_MULTIMINT, "Mint at most 7 at a time");
+    // require(count <= MAX_MULTIMINT, "Mint at most 7 at a time");
 
       // Free Mints
     if (totalSupply() <= FREE_MINTS) {
@@ -106,8 +110,20 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
 
   function withdraw() public payable onlyOwner nonReentrant{
     uint256 balance = address(this).balance;
+    uint256 devBalance = balance * 15 / 100; // 15%
 
-    Address.sendValue(payable(owner()), balance);
+    console.logAddress(_devWallet);
+    console.logAddress(owner());
+    Address.sendValue(payable(_devWallet), devBalance);
+    Address.sendValue(payable(owner()), address(this).balance);
+  }
+
+  function setDevWallet(address _newDevWallet) external view onlyOwner {
+    _newDevWallet = _devWallet;
+  }
+
+  receive() external payable {
+
   }
 
 // ***** Internal Functions *****

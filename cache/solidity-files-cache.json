@@ -513,8 +513,8 @@
       ]
     },
     "/home/bioready/github/FrankenPunks/contracts/FrankenPhunks.sol": {
-      "lastModificationDate": 1642436966583,
-      "contentHash": "babad2c6dfa6f1a75bb6e0f7f455fbe2",
+      "lastModificationDate": 1642450448600,
+      "contentHash": "8cb013de95b11b8349b844abcee7df7b",
       "sourceName": "contracts/FrankenPhunks.sol",
       "solcConfig": {
         "version": "0.8.7",
@@ -544,13 +544,49 @@
         "@openzeppelin/contracts/security/ReentrancyGuard.sol",
         "@openzeppelin/contracts/utils/Counters.sol",
         "@openzeppelin/contracts/utils/Address.sol",
-        "@openzeppelin/contracts/access/Ownable.sol"
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "hardhat/console.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
       ],
       "artifacts": [
         "FrankenPhunks"
+      ]
+    },
+    "/home/bioready/github/FrankenPunks/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1642281062402,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
       ]
     }
   }
