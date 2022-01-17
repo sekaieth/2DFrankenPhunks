@@ -103,9 +103,13 @@ contract FrankenPhunks is ERC721Enumerable, ReentrancyGuard, Ownable {
     baseExtension = _newBaseExtension;
   }
 
+  function getBalance() public view onlyOwner returns (uint256) {
+    return address(this).balance;
+  }
+
   function withdraw() public payable onlyOwner nonReentrant{
     uint256 balance = address(this).balance;
-    uint256 devBalance = balance * 15 / 100; // 15%
+    uint256 devBalance = (balance * 15 / 100); // 15%
 
     Address.sendValue(payable(_devWallet), devBalance);
     Address.sendValue(payable(owner()), address(this).balance);

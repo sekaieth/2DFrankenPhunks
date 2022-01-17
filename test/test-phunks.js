@@ -6,41 +6,85 @@ describe("Deploy & Test FrankenPhunks", function () {
   let accounts, FrankenPhunks, contract, deployer, frankenPhunksContract
 
   beforeEach('Set up contract for each test', async () => {
-    FrankenPhunks = await hre.ethers.getContractFactory("FrankenPhunks");
-    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", "0xf5963554E4FD06F910E4e74dD012E9b018C83209", "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
-    contract = await frankenPhunksContract.deployed();
+
     accounts = await ethers.getSigners();
     deployer = accounts[0];
+    devWallet = accounts[1];
+
+    FrankenPhunks = await hre.ethers.getContractFactory("FrankenPhunks");
+    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", deployer.address, devWallet.address, "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
+    contract = await frankenPhunksContract.deployed();
   })
 
-  it("Mints a new token", async function () {
-    const cost = ethers.utils.parseEther("0.096");
+  it("Withdraw funds from contract", async function () {
+
     await frankenPhunksContract.deployed();
     console.log("Contract address:", contract.address)
 
 
-    const balanceBefore = await contract.balanceOf(deployer.address);
-    console.log("Balance of deployer", balanceBefore.toString());
+    // **** TEST WITHDRAW ****
 
-    await contract.setBaseURI("ipfs://QmfYoQ7cKykmtPbmnKXFFFUG88VqvWvyLgavYo4W6tLF2y/")
+    // Get balances before anything
+    let deployerBalance = await deployer.getBalance();
+    console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalance, "ether"));
 
-    await contract.mint(3);
+    let devWalletBalance = await devWallet.getBalance();
+    console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalance, "ether"));
+
+    let contractBalance = await contract.getBalance();
+    console.log("Contract balance:", ethers.utils.formatUnits(contractBalance, "ether"));
+
+    // Send 1ETH from owner to contract
+    console.log("Sending Ether!") 
+
+    await deployer.sendTransaction({ 
+      to: contract.address,
+      value: ethers.utils.parseEther("1.0")
+     })
+
+    // Check balances of deployer, dev wallet, contract
+    let deployerBalanceAfterSend = await deployer.getBalance();
+    console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalanceAfterSend, "ether"));
+
+    let devWalletBalanceAfterSend = await devWallet.getBalance();
+    console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalanceAfterSend, "ether"));
+
+    let contractBalanceAfterSend = await contract.getBalance();
+    console.log("Contract balance:", ethers.utils.formatUnits(contractBalanceAfterSend, "ether"));
+
+     console.log("Withdraw from Contract!")
+     
+     const withdraw = await contract.withdraw();
 
 
-    balanceAfter = await contract.balanceOf(deployer.address);
-    console.log("Balance of Deployer after mint:", balanceAfter.toString());
+
+    let deployerBalanceAfterWithdraw= await deployer.getBalance();
+    console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalanceAfterWithdraw, "ether"));
+
+    let devWalletBalanceAfterWithdraw = await devWallet.getBalance();
+    console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalanceAfterWithdraw, "ether"));
+
+    let contractBalanceAfterWithdraw = await contract.getBalance();
+    console.log("Contract balance:", ethers.utils.formatUnits(contractBalanceAfterWithdraw, "ether"));
+
+
+
+
+
+
+  // **** TEST REVEAL ****
 
     // Token URI Before reveal
-    console.log("Token URIs before reveal:");
-    console.log("Token 0 URI:", await contract.tokenURI(0));
-    console.log("Token 1 URI:", await contract.tokenURI(1));
-    console.log("Token 2 URI:", await contract.tokenURI(2));
+    // console.log("Token URIs before reveal:");
+    // console.log("Token 0 URI:", await contract.tokenURI(0));
+    // console.log("Token 1 URI:", await contract.tokenURI(1));
+    // console.log("Token 2 URI:", await contract.tokenURI(2));
 
-    console.log("Token URIs after reveal:");
-    contract.reveal();
-    console.log("Token 0 URI:", await contract.tokenURI(0));
-    console.log("Token 1 URI:", await contract.tokenURI(1));
-    console.log("Token 2 URI:", await contract.tokenURI(2));
+    // console.log("Token URIs after reveal:");
+    // contract.reveal();
+    // console.log("Token 0 URI:", await contract.tokenURI(0));
+    // console.log("Token 1 URI:", await contract.tokenURI(1));
+    // console.log("Token 2 URI:", await contract.tokenURI(2));
 
     
   });
