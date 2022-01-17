@@ -12,79 +12,135 @@ describe("Deploy & Test FrankenPhunks", function () {
     devWallet = accounts[1];
 
     FrankenPhunks = await hre.ethers.getContractFactory("FrankenPhunks");
-    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", deployer.address, devWallet.address, "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
+    frankenPhunksContract = await FrankenPhunks.deploy("2DFrankenPhunks", "PHUNKEN", deployer.address, "ipfs://bafybeiagkivpeohoid23ntzy4rkurqbvtrqwuqgirbhplz7k74whnxojte/?filename=waveicon-32x32.png");
     contract = await frankenPhunksContract.deployed();
   })
 
-  it("Withdraw funds from contract", async function () {
+  // it("Withdraw funds from contract", async function () {
+
+  //   await frankenPhunksContract.deployed();
+  //   console.log("Contract address:", contract.address)
+
+
+  //   // **** TEST WITHDRAW ****
+
+  //   // Get balances before anything
+  //   let deployerBalance = await deployer.getBalance();
+  //   console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalance, "ether"));
+
+  //   let devWalletBalance = await devWallet.getBalance();
+  //   console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalance, "ether"));
+
+  //   let contractBalance = await contract.getBalance();
+  //   console.log("Contract balance:", ethers.utils.formatUnits(contractBalance, "ether"));
+
+  //   // Send 1ETH from owner to contract
+  //   console.log("Sending Ether!") 
+
+  //   await deployer.sendTransaction({ 
+  //     to: contract.address,
+  //     value: ethers.utils.parseEther("1.0")
+  //    })
+
+  //   // Check balances of deployer, dev wallet, contract
+  //   let deployerBalanceAfterSend = await deployer.getBalance();
+  //   console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalanceAfterSend, "ether"));
+
+  //   let devWalletBalanceAfterSend = await devWallet.getBalance();
+  //   console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalanceAfterSend, "ether"));
+
+  //   let contractBalanceAfterSend = await contract.getBalance();
+  //   console.log("Contract balance:", ethers.utils.formatUnits(contractBalanceAfterSend, "ether"));
+
+  //    console.log("Withdraw from Contract!")
+     
+  //    const withdraw = await contract.withdraw();
+
+
+
+  //   let deployerBalanceAfterWithdraw= await deployer.getBalance();
+  //   console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalanceAfterWithdraw, "ether"));
+
+  //   let devWalletBalanceAfterWithdraw = await devWallet.getBalance();
+  //   console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalanceAfterWithdraw, "ether"));
+
+  //   let contractBalanceAfterWithdraw = await contract.getBalance();
+  //   console.log("Contract balance:", ethers.utils.formatUnits(contractBalanceAfterWithdraw, "ether"));
+
+
+
+  it("Mints", async function () {
 
     await frankenPhunksContract.deployed();
     console.log("Contract address:", contract.address)
 
 
-    // **** TEST WITHDRAW ****
+  // **** TEST MINTING FOR FREE ****
 
-    // Get balances before anything
-    let deployerBalance = await deployer.getBalance();
-    console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalance, "ether"));
+  console.log("MINTING FOR FREE!!!!!");
+  console.log("Deployer token balance:", await contract.balanceOf(deployer.address));
+  console.log("devWallet token balance:", await contract.balanceOf(devWallet.address));
 
-    let devWalletBalance = await devWallet.getBalance();
-    console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalance, "ether"));
-
-    let contractBalance = await contract.getBalance();
-    console.log("Contract balance:", ethers.utils.formatUnits(contractBalance, "ether"));
-
-    // Send 1ETH from owner to contract
-    console.log("Sending Ether!") 
-
-    await deployer.sendTransaction({ 
-      to: contract.address,
-      value: ethers.utils.parseEther("1.0")
-     })
-
-    // Check balances of deployer, dev wallet, contract
-    let deployerBalanceAfterSend = await deployer.getBalance();
-    console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalanceAfterSend, "ether"));
-
-    let devWalletBalanceAfterSend = await devWallet.getBalance();
-    console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalanceAfterSend, "ether"));
-
-    let contractBalanceAfterSend = await contract.getBalance();
-    console.log("Contract balance:", ethers.utils.formatUnits(contractBalanceAfterSend, "ether"));
-
-     console.log("Withdraw from Contract!")
-     
-     const withdraw = await contract.withdraw();
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(100);
+  await contract.mint(11);
 
 
+  console.log("MINTING AT COST");
+  // **** TEST MINTING AT 0.032ETH/MINT ****
 
-    let deployerBalanceAfterWithdraw= await deployer.getBalance();
-    console.log("Deployer ETH balance:", ethers.utils.formatUnits(deployerBalanceAfterWithdraw, "ether"));
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
 
-    let devWalletBalanceAfterWithdraw = await devWallet.getBalance();
-    console.log("Dev Wallet ETH balance:", ethers.utils.formatUnits(devWalletBalanceAfterWithdraw, "ether"));
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
 
-    let contractBalanceAfterWithdraw = await contract.getBalance();
-    console.log("Contract balance:", ethers.utils.formatUnits(contractBalanceAfterWithdraw, "ether"));
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
+
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
+
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
+
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
+
+  await contract.mint(100, {
+    value: ethers.utils.parseEther("3.2")
+  });
 
 
+  console.log("MINTING COMPLETED!");
 
 
+  console.log("Deployer token balance:", await contract.balanceOf(deployer.address));
 
+  contractEtherBalance = await contract.getBalance();
+  console.log("Contract Ether Balance:", contractEtherBalance);
 
-  // **** TEST REVEAL ****
+  deployerBalance = deployer.getBalance();
+  console.log("Deployer Ether balance before withdraw:", await deployerBalance);
 
-    // Token URI Before reveal
-    // console.log("Token URIs before reveal:");
-    // console.log("Token 0 URI:", await contract.tokenURI(0));
-    // console.log("Token 1 URI:", await contract.tokenURI(1));
-    // console.log("Token 2 URI:", await contract.tokenURI(2));
+  withdraw = contract.withdraw();
 
-    // console.log("Token URIs after reveal:");
-    // contract.reveal();
-    // console.log("Token 0 URI:", await contract.tokenURI(0));
-    // console.log("Token 1 URI:", await contract.tokenURI(1));
-    // console.log("Token 2 URI:", await contract.tokenURI(2));
+  deployerBalanceAfterWithdraw = deployer.getBalance();
+  console.log("Deployer Ether balance after withdraw:", await deployerBalanceAfterWithdraw);
 
     
   });
