@@ -1,10 +1,12 @@
 body{
-background-image: linear-gradient(225deg, #461330 0%, #412c55 50%, #032942 100%);
-
+    background-image: linear-gradient(225deg, #461330 0%, #412c55 50%, #032942 100%);
+    margin: 0;
+    padding: 0;
 }
 
 h1,h2,h3,h4,h5,h6,p,span,div,ul,li,ol{
-    color: white
+    display: flex;
+    color: white;
 }
 
 .card{
@@ -13,3 +15,119 @@ h1,h2,h3,h4,h5,h6,p,span,div,ul,li,ol{
     box-shadow: 0 16px 24px 2px rgb(0 0 0 / 34%), 0 6px 30px 5px rgb(0 0 0 / 32%), 0 8px 10px -7px rgb(0 0 0 / 40%);
 
 }
+
+/* Containers */
+.container-full{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-center{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-fluid{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+
+h1.large {
+    display: flex;
+    justify-content: center;
+    font-size: 72px;
+    font-family: cursive;
+    font: "Creepster";
+    padding: 10px;
+}
+
+p.center {
+    display: flex;
+    justify-content: center;
+}
+
+/* Buttons */
+
+.cta-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    border: 5px;
+    width: 500px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+
+  }
+
+.connect-wallet-button {
+    background: -webkit-linear-gradient(225deg, #032942 100%, #412c55 50%, #461330 0%);
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+  }
+
+
+
+
+
+/* Animations */
+
+.image-fader {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+}
+
+.image-fader img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    animation-name: imagefade;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 8s;
+  }
+  
+  @keyframes imagefade {
+    0% {
+      opacity:1;
+    }
+    17% {
+      opacity:1;
+    }
+    25% {
+      opacity:0;
+    }
+    92% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  .image-fader img:nth-of-type(1) {
+    animation-delay: 6s;
+  }
+  .image-fader img:nth-of-type(2) {
+    animation-delay: 4s;
+  }
+  .image-fader img:nth-of-type(3) {
+    animation-delay: 2s;
+  }
+  .image-fader img:nth-of-type(4) {
+    animation-delay: 0;
+  }
+

@@ -1,9 +1,15 @@
 import Web3 from "web3";
 import React, { Component } from "react";
-import Punks from "./contracts/Punks.json";
+import PunksContract from "./contracts/FrankenPhunks.json";
 import getWeb3 from "./getWeb3";
 import NFTRow from "./components/NFTRow";
 import './App.css';
+
+import punk1 from "./assets/2dpunk.jpeg";
+import punk2 from "./assets/2dpunk2.jpeg";
+import punk3 from "./assets/2dpunk3.jpeg";
+import punk4 from "./assets/2dpunk4.jpeg";
+
 import Home from './Home';
 import Mint from './Mint';
 import {Route, Link} from 'react-router-dom';
@@ -12,7 +18,10 @@ import {Route, Link} from 'react-router-dom';
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
-  componentDidMount = async () => {
+  connectWallet = async () => {
+
+    this.componentDidMount = async () => {
+      
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
@@ -23,13 +32,13 @@ class App extends Component {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = Punks.networks[networkId];
+      const deployedNetwork = PunksContract.networks[networkId];
       const instance = new web3.eth.Contract(
-        Punks.abi,
+        PunksContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
       const socketInstance = new web3socket.eth.Contract(
-        Punks.abi,
+        PunksContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
        // Set web3, accounts, and contract to the state, and then proceed with an
@@ -57,7 +66,7 @@ class App extends Component {
       );
       console.error(error);
     }
-  };
+  }};
 
   async mintNFT(e) {
     e.preventDefault()
@@ -94,7 +103,26 @@ class App extends Component {
 
   render() {
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return <div className="container-full">
+              <div className="container-fluid">
+                <div className="image-fader">
+                  <img alt="" src={punk1} />
+                  <img alt="" src={punk2} />
+                  <img alt="" src={punk3} />
+                  <img alt="" src={punk4} />
+                </div>
+              </div>
+              <h1 className="large">
+                2D Franken Phunks
+              </h1>
+                <div className="container-fluid">
+                  <button className="cta-button connect-wallet-button"
+                            onClick={this.connectWallet}>
+                    Connect Metamask
+                  </button>
+                </div>
+              
+            </div>;
     }
     return (
       <div className="App">
@@ -111,7 +139,7 @@ class App extends Component {
           <option value="9">9</option>
           <option value="10">10</option>
         </select>
-        <a href="#"onClick={this.mintNFT.bind(this)}>Mint Punks</a> 
+        <a href="#"onClick={this.mintNFT.bind(this)}>Mint PunksContract</a> 
         <br />
         <table>
           <thead>
