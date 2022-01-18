@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 
+@font-face {
+    font-family: 'MadPixels';
+    src: local('MadPixels'), url(./MadPixels.otf) format('opentype');
+}
+
 body{
     background: linear-gradient(
         rgba(0, 0, 0, 0.9),
@@ -70,8 +75,8 @@ h1.large {
     display: flex;
     justify-content: center;
     font-size: 72px;
-    font-family: Creepster;
-    color: green;
+    font-family: MadPixels;
+    color: rgb(0, 156, 0);
     padding: 10px;
 }
 
@@ -80,8 +85,8 @@ h3.green {
     justify-content: center;
     align-content: center;
     font-size: 32px;
-    font-family: Creepster;
-    color: green;
+    font-family: MadPixels;
+    color: rgb(0, 156, 0);
 }
 
 p.center {

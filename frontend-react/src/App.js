@@ -111,7 +111,7 @@ class App extends Component {
                   2D Franken Phunks
                 </h3>
                 <button className="cta-button-small connect-wallet-button"
-                            onClick={() => this.connectWallet}>
+                            onClick={this.connectWallet}>
                     Connect Metamask
                   </button>
               </div>
@@ -129,7 +129,7 @@ class App extends Component {
               <h3 className="green">
                 Connect your wallet to begin your journey
               </h3>
-            </div>;
+            </div>
     }
     return (
       <div className="App">
