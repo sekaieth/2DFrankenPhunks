@@ -1,0 +1,15 @@
+body{
+background-image: linear-gradient(225deg, #461330 0%, #412c55 50%, #032942 100%);
+
+}
+
+h1,h2,h3,h4,h5,h6,p,span,div,ul,li,ol{
+    color: white
+}
+
+.card{
+    background-color: yellow;
+    -webkit-box-shadow: 0 16px 24px 2px rgb(0 0 0 / 34%), 0 6px 30px 5px rgb(0 0 0 / 32%), 0 8px 10px -7px rgb(0 0 0 / 40%);
+    box-shadow: 0 16px 24px 2px rgb(0 0 0 / 34%), 0 6px 30px 5px rgb(0 0 0 / 32%), 0 8px 10px -7px rgb(0 0 0 / 40%);
+
+}
