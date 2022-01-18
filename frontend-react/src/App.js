@@ -19,6 +19,8 @@ class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
   connectWallet = async () => {
+
+    if(window.ethereum) {
       
     try {
       // Get network provider and web3 instance.
@@ -39,6 +41,8 @@ class App extends Component {
         PunksContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
+
+
        // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       const currentSupply = parseInt(await instance.methods.currentSupply().call())
@@ -64,7 +68,7 @@ class App extends Component {
       );
       console.error(error);
     }
-  };
+  }};
 
   async mintNFT(e) {
     e.preventDefault()
@@ -103,7 +107,7 @@ class App extends Component {
     if (!this.state.web3) {
       return <div className="container-full">
               <div className="header">
-                <h3 className="container justify-start">
+                <h3 className="green">
                   2D Franken Phunks
                 </h3>
                 <button className="cta-button-small connect-wallet-button"
@@ -120,8 +124,11 @@ class App extends Component {
                 </div>
               </div>
               <h1 className="large">
-                2D Franken Phunks
+                Welcome to the Lab
               </h1>              
+              <h3 className="green">
+                Connect your wallet to begin your journey
+              </h3>
             </div>;
     }
     return (

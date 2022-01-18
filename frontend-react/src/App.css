@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
 body{
-    background-image: linear-gradient(225deg, #461330 0%, #412c55 50%, #032942 100%);
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.5)
+    ),
+    url("./components/images/lee-qian-yi-kyoko-lab.jpg");
+    background-size: cover;
+    background-blend-mode: darken;
     margin: 0;
     padding: 0;
 }
@@ -62,9 +70,18 @@ h1.large {
     display: flex;
     justify-content: center;
     font-size: 72px;
-    font-family: cursive;
-    font: "Creepster";
+    font-family: Creepster;
+    color: green;
     padding: 10px;
+}
+
+h3.green {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 32px;
+    font-family: Creepster;
+    color: green;
 }
 
 p.center {
@@ -104,9 +121,9 @@ p.center {
 
 
 .connect-wallet-button {
-    background: -webkit-linear-gradient(225deg, #032942 100%, #412c55 50%, #461330 0%);
+    background: -webkit-linear-gradient(225deg, #1d9904 100%, #012906 50%, #011102 0%);
     background-size: 200% 200%;
-    animation: gradient-animation 4s ease infinite;
+    animation: gradient-animation s ease infinite;
   }
 
 
