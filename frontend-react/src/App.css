@@ -23,20 +23,38 @@ h1,h2,h3,h4,h5,h6,p,span,div,ul,li,ol{
     width: 100vw;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
 }
 
-.container-center{
+.header {
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-center {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.container-fluid{
+.container-fluid {
     display: flex;
     width: 100vw;
     justify-content: center;
+}
+
+.justify-start {
+    display: flex;
+    justify-content: left;
 }
 
 
@@ -56,7 +74,7 @@ p.center {
 
 /* Buttons */
 
-.cta-button {
+.cta-button-large {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,16 +86,28 @@ p.center {
     font-weight: bold;
     color: white;
     border-radius: 20px;
-
   }
+
+  .cta-button-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    border: 5px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+  }
+
 
 .connect-wallet-button {
     background: -webkit-linear-gradient(225deg, #032942 100%, #412c55 50%, #461330 0%);
     background-size: 200% 200%;
     animation: gradient-animation 4s ease infinite;
   }
-
-
 
 
 
@@ -88,6 +118,7 @@ p.center {
     justify-content: center;
     width: 250px;
     height: 250px;
+    margin-top: 100px;
 }
 
 .image-fader img {

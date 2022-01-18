@@ -19,8 +19,6 @@ class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
   connectWallet = async () => {
-
-    this.componentDidMount = async () => {
       
     try {
       // Get network provider and web3 instance.
@@ -66,7 +64,7 @@ class App extends Component {
       );
       console.error(error);
     }
-  }};
+  };
 
   async mintNFT(e) {
     e.preventDefault()
@@ -104,6 +102,15 @@ class App extends Component {
   render() {
     if (!this.state.web3) {
       return <div className="container-full">
+              <div className="header">
+                <h3 className="container justify-start">
+                  2D Franken Phunks
+                </h3>
+                <button className="cta-button-small connect-wallet-button"
+                            onClick={() => this.connectWallet}>
+                    Connect Metamask
+                  </button>
+              </div>
               <div className="container-fluid">
                 <div className="image-fader">
                   <img alt="" src={punk1} />
@@ -114,14 +121,7 @@ class App extends Component {
               </div>
               <h1 className="large">
                 2D Franken Phunks
-              </h1>
-                <div className="container-fluid">
-                  <button className="cta-button connect-wallet-button"
-                            onClick={this.connectWallet}>
-                    Connect Metamask
-                  </button>
-                </div>
-              
+              </h1>              
             </div>;
     }
     return (
@@ -135,11 +135,9 @@ class App extends Component {
           <option value="5">5</option>
           <option value="6">6</option>
           <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
+
         </select>
-        <a href="#"onClick={this.mintNFT.bind(this)}>Mint PunksContract</a> 
+        <a href="#"onClick={this.mintNFT.bind(this)}>Mint Punks</a> 
         <br />
         <table>
           <thead>
