@@ -1,15 +1,11 @@
-# Basic Sample Hardhat Project
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+# FrankenPhunks
+- A project I worked on that died when crypto markets started crashing, but gave me a lot of experience with some smart contract development & front end development along with [RazaEngineering](https://github.com/razaengineering) doing a lot of the web3.js work.
+- Was supposed to be procgen images stored in IPFS.  Art was never generated.
+- Smart contract features:
+  - 3333 Total mints
+    - First 1111 to be free 
+    - Max 7 mints at one time
+    - .032 ETH per mint
+  - Delayed reveal
+  - Sale on/off
+  - Dev payment baked into withdraw function
