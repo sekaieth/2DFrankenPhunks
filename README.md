@@ -6,7 +6,7 @@
 </p>
 
 <p float="left" align="justify">
-A project I worked on that died when crypto markets started crashing, but gave me a lot of experience with some smart contract development & front end development along with <a href="https://github.com/razaengineering">RazaEngineering</a> doing a lot of the web3.js work.
+A project I worked on that died when crypto markets started crashing, but gave me a lot of experience with smart contract development & front end development along with <a href="https://github.com/razaengineering">RazaEngineering</a> doing a lot of the web3.js work.
 </p>
 
 <p float="left" align="justify">
